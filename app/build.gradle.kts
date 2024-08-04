@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     id ("kotlin-kapt")
     id ("dagger.hilt.android.plugin")
+    id ("kotlinx-serialization")
 
 }
 
@@ -73,10 +74,9 @@ dependencies {
     implementation("com.google.dagger:hilt-android:2.48.1")
     kapt("com.google.dagger:hilt-android-compiler:2.48.1")
     implementation (libs.androidx.navigation.compose)
-    implementation (libs.kotlinx.serialization.json)
-    implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")
-    implementation("androidx.compose.runtime:runtime-livedata:1.6.8")
-    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
+    //    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation("androidx.hilt:hilt-navigation-fragment:1.0.0-alpha03")
 }
 kapt {
     correctErrorTypes = true

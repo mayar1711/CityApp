@@ -12,7 +12,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import com.example.cityapp.model.data.City
 import com.example.cityapp.viewmodel.CityViewModel
 
@@ -57,12 +56,12 @@ fun CityListItem(city: City, onCityClick: (City) -> Unit) {
     ListItem(
         modifier = Modifier.clickable { onCityClick(city) },
         headlineContent = { Text("${city.name}, ${city.country}") },
-        supportingContent = { Text("Lon: ${city.coord.lon}, Lat: ${city.coord.lat}") }
+        //supportingContent = { Text("Lon: ${city.coord.lon}, Lat: ${city.coord.lat}") }
     )
 }
 
 fun openCityInMaps(city: City, context: Context) {
-    val uri = "geo:${city.coord.lat},${city.coord.lon}?q=${city.coord.lat},${city.coord.lon}(${city.name})"
-    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
-    context.startActivity(intent)
+  //  val uri = "geo:${city.coord.lat},${city.coord.lon}?q=${city.coord.lat},${city.coord.lon}(${city.name})"
+  //  val intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
+ //   context.startActivity(intent)
 }
