@@ -1,6 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id ("kotlin-kapt")
+    id ("dagger.hilt.android.plugin")
+
 }
 
 android {
@@ -9,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.cityapp"
-        minSdk = 34
+        minSdk = 30
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -66,4 +69,15 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    implementation("com.google.dagger:hilt-android:2.48.1")
+    kapt("com.google.dagger:hilt-android-compiler:2.48.1")
+    implementation (libs.androidx.navigation.compose)
+    implementation (libs.kotlinx.serialization.json)
+    implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")
+    implementation("androidx.compose.runtime:runtime-livedata:1.6.8")
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+}
+kapt {
+    correctErrorTypes = true
 }
