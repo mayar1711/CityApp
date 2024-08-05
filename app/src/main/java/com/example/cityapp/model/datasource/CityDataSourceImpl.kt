@@ -18,14 +18,10 @@ class CityDataSourceImpl @Inject constructor(
         val jsonString = context.assets.open("cities.json").bufferedReader().use { it.readText() }
         json.decodeFromString(jsonString)
     }
-
-    override suspend fun loadCities(page: Int, pageSize: Int): List<City> {
-        val fromIndex = (page - 1) * pageSize
-        val toIndex = kotlin.math.min(fromIndex + pageSize, cities.size)
-        return if (fromIndex < cities.size) {
-            cities.subList(fromIndex, toIndex)
-        } else {
-            emptyList()
-        }
+    override suspend fun getCities(): List<City> {
+        val inputStream = context.assets.open("cities.json")
+        val jsonString = inputStream.bufferedReader().use { it.readText() }
+        return Json.decodeFromString(jsonString)
     }
+
 }
