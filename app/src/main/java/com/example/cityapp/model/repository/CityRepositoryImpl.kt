@@ -9,7 +9,7 @@ class CityRepositoryImpl @Inject constructor(
     private val cityDataSource: CityDataSource
 ) : CityRepository {
 
-    override suspend fun getCities(page: Int, pageSize: Int): List<City> {
-        return cityDataSource.loadCities(page, pageSize)
+    override suspend fun getCities(): List<City> {
+        return cityDataSource.getCities()
     }
 }

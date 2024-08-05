@@ -6,7 +6,6 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.lifecycle.ViewModelProvider
 import com.example.cityapp.ui.theme.CityAppTheme
-import com.example.cityapp.view.CitySearchScreen
 import com.example.cityapp.viewmodel.CityViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
