@@ -3,7 +3,6 @@ package com.example.cityapp.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.cityapp.model.data.City
-import com.example.cityapp.model.data.Trie
 import com.example.cityapp.model.repository.CityRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -23,17 +22,22 @@ class CityViewModel @Inject constructor(
     private val _filteredCities = MutableStateFlow<List<City>>(emptyList())
     val filteredCities: StateFlow<List<City>> = _filteredCities.asStateFlow()
 
-    private val trie = Trie()
+    private var currentPage = 1
+    private val pageSize = 50
 
     init {
+        loadMoreCities()
+    }
+
+    private fun loadMoreCities() {
         viewModelScope.launch {
-            val citiesList = cityRepository.getCities()
-            _cities.value = citiesList
-            citiesList.forEach { trie.insert(it) }
+            val citiesList = cityRepository.getCities(currentPage, pageSize)
+            _cities.value += citiesList
+            currentPage++
         }
     }
 
     fun searchCities(prefix: String) {
-        _filteredCities.value = trie.search(prefix)
+        _filteredCities.value = _cities.value.filter { it.name.startsWith(prefix, ignoreCase = true) }
     }
 }
