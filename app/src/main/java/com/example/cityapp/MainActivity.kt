@@ -12,7 +12,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-  lateinit var  cityViewModel : CityViewModel
+  private lateinit var  cityViewModel : CityViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         cityViewModel  = ViewModelProvider(this)[CityViewModel::class.java]

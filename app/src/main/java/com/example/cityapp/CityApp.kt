@@ -1,4 +1,4 @@
-package com.example.cityapp.view
+package com.example.cityapp
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
