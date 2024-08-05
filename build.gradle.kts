@@ -2,4 +2,11 @@
 plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.jetbrains.kotlin.android) apply false
+    id ("org.jetbrains.kotlin.plugin.serialization") version "1.8.20" apply false
+}
+buildscript{
+    dependencies {
+        classpath ("com.google.dagger:hilt-android-gradle-plugin:2.48.1")
+
+    }
 }
